@@ -1,7 +1,17 @@
 {
-  "name": "nextjs-boilerplate",
-  "version": "0.1.0",
+  "name": "next-typescript",
+  "version": "1.0.0",
   "private": true,
+  "description": "Next.js boilerplate with TypeScript",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yousufkalim/next-ts-boilerplate.git"
+  },
+  "author": "Yousuf Kalim <yousufkalim@outlook.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yousufkalim/next-ts-boilerplate/issues"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
