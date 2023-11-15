@@ -1,1 +1,1 @@
-export { Home as default } from '@/layouts/Home';
+export { Home as default } from '@layouts/Home';
