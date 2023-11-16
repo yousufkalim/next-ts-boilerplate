@@ -1,4 +1,5 @@
 import { API_URL } from '@config';
+import toast from 'react-hot-toast';
 import TodoType from '../types/Todo.type';
 
 export const fetchAllTodos = async (): Promise<TodoType[]> => {
@@ -8,6 +9,7 @@ export const fetchAllTodos = async (): Promise<TodoType[]> => {
     return await response.json();
   } catch (err) {
     console.log('API Error ---> ', err);
+    toast.error('Error occurred while fetching the todos');
     throw new Error('Error occurred while fetching the todos');
   }
 };
@@ -25,6 +27,7 @@ export const updateTodo = async (todo: TodoType): Promise<TodoType> => {
     return await response.json();
   } catch (err) {
     console.log('API Error ---> ', err);
+    toast.error('Error occurred while updating the todo');
     throw new Error('Error occurred while updating the todo');
   }
 };

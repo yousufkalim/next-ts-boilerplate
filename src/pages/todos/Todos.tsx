@@ -50,7 +50,7 @@ export function Todos(props: PropTypes) {
 
         <div id="tasks" className="my-5">
           {todos.map((todo) => {
-            return <TodoItem todo={todo} />;
+            return <TodoItem todo={todo} key={todo.id} />;
           })}
         </div>
         <p className="text-xs text-slate-500 text-center">Last updated 12 minutes ago</p>

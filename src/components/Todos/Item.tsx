@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useMutation } from 'react-query';
 import { updateTodo } from '@api/todos.api';
+import toast from 'react-hot-toast';
 import TodoType from '../../types/Todo.type';
 
 import CheckboxIcon from '@assets/checkbox.svg';
@@ -17,7 +18,6 @@ export function PendingItem({
     <div
       id="task"
       className="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150"
-      key={todo.id}
     >
       <div className="inline-flex items-center space-x-2">
         <div onClick={() => handleCompleteTodo(todo)}>
@@ -34,7 +34,6 @@ export function CompletedItem({ todo }: { todo: TodoType }) {
     <div
       id="task"
       className="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent"
-      key={todo.id}
     >
       <div className="inline-flex items-center space-x-2">
         <div>
@@ -56,7 +55,8 @@ export function TodoItem(props: { todo: TodoType }) {
     setTodo({ ...todo, completed: true });
 
     // Call the mutation function to update the completion status
-    const data = await mutation.mutateAsync({ ...todo, completed: true });
+    await mutation.mutateAsync({ ...todo, completed: true });
+    toast.success('The task has been completed');
   };
 
   return todo.completed ? (
