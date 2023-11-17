@@ -5,6 +5,7 @@ import TodoType from '../../types/Todo.type';
 
 import ClockIcon from '@assets/clock.svg';
 import ListIcon from '@assets/list.svg';
+import toast from 'react-hot-toast';
 
 interface PropTypes {
   todos: TodoType[];
@@ -15,12 +16,17 @@ export function Todos(props: PropTypes) {
     queryKey: ['todos'],
     queryFn: fetchAllTodos,
     initialData: props.todos,
+    onError: () => {
+      toast.error('Error while fetching the todos');
+    },
   });
 
-  const todos = [
-    data.filter((todo) => todo.completed).slice(0, 2),
-    data.filter((todo) => !todo.completed).slice(0, 4),
-  ].flat();
+  const todos = data?.length
+    ? [
+        data.filter((todo) => todo.completed).slice(0, 2),
+        data.filter((todo) => !todo.completed).slice(0, 4),
+      ].flat()
+    : [];
 
   return (
     <main className="bg-[#F3F4F6] text-slate-700 min-h-screen w-100 flex items-center">

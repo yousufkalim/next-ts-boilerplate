@@ -52,11 +52,18 @@ export function TodoItem(props: { todo: TodoType }) {
   const mutation = useMutation(updateTodo);
 
   const handleCompleteTodo = async (todo: TodoType) => {
-    setTodo({ ...todo, completed: true });
-
-    // Call the mutation function to update the completion status
-    await mutation.mutateAsync({ ...todo, completed: true });
-    toast.success('The task has been completed');
+    mutation.mutate(
+      { ...todo, completed: true },
+      {
+        onSuccess: () => {
+          setTodo({ ...todo, completed: true });
+          toast.success('The task has been completed');
+        },
+        onError: () => {
+          toast.error('Error occurred while updating the todo');
+        },
+      },
+    );
   };
 
   return todo.completed ? (
