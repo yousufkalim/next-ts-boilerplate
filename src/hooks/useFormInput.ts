@@ -17,7 +17,7 @@ export function useFormInput({ initialValue = '' }: FormInputProps): FormInput {
   const [error, setError] = useState<string | undefined>();
   const [isDirty, setIsDirty] = useState<boolean>(false);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setValue(event.target.value);
     setIsDirty(true);
 
@@ -27,13 +27,13 @@ export function useFormInput({ initialValue = '' }: FormInputProps): FormInput {
     }
   };
 
-  const handleInvalid = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleInvalid = (event: ChangeEvent<HTMLInputElement>): void => {
     // Prevent native errors appearing
     event.preventDefault();
     setError(event.target.validationMessage);
   };
 
-  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
+  const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
     // Only validate when the user has made a change
     if (isDirty) {
       event.target.checkValidity();

@@ -1,4 +1,5 @@
 import { useQuery } from 'react-query';
+import { FC } from 'react';
 import { fetchAllTodos } from '@api/todos.api';
 import { TodoItem } from '@components/Todos';
 import TodoType from '../../types/Todo.type';
@@ -7,11 +8,11 @@ import ClockIcon from '@assets/img/clock.svg';
 import ListIcon from '@assets/img/list.svg';
 import toast from 'react-hot-toast';
 
-interface PropTypes {
+interface TodoProps {
   todos: TodoType[];
 }
 
-export function Todos(props: PropTypes) {
+export const Todos: FC<TodoProps> = function (props) {
   const { data = [] } = useQuery({
     queryKey: ['todos'],
     queryFn: fetchAllTodos,
@@ -63,4 +64,4 @@ export function Todos(props: PropTypes) {
       </div>
     </main>
   );
-}
+};

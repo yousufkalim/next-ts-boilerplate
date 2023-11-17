@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Inter } from 'next/font/google';
 import { Meta } from '@components/Meta';
 import NextLogo from '@assets/img/next.svg';
@@ -5,13 +6,13 @@ import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] });
 
-interface PropTypes {
+interface HomeProps {
   title: string;
   description: string;
   author: string;
 }
 
-export function Home({ title, description, author }: PropTypes) {
+export const Home: FC<HomeProps> = function ({ title, description, author }) {
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
@@ -122,4 +123,4 @@ export function Home({ title, description, author }: PropTypes) {
       </div>
     </main>
   );
-}
+};

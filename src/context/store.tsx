@@ -2,6 +2,7 @@
 import React, { useContext, useState, createContext, ReactNode } from 'react';
 
 // Initializing Create Context Hook
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface StoreType {}
 
 const storeContext = createContext<StoreType | null>(null);

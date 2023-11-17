@@ -25,7 +25,7 @@ export function useWindowSize(): WindowSize {
     // Clean up after ourselves
     document.documentElement.removeChild(ruler);
 
-    // @ts-ignore
+    // @ts-expect-error null
     ruler = null;
   }, []);
 
@@ -51,7 +51,7 @@ export function useWindowSize(): WindowSize {
   const [windowSize, setWindowSize] = useState<WindowSize>(dimensions.current);
 
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = (): void => {
       setWindowSize(getSize());
     };
 

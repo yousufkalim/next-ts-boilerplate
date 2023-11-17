@@ -10,7 +10,7 @@ export function useInViewport(
   elementRef: RefObject<Element>,
   unobserveOnIntersect: boolean,
   options: IntersectionOptions = {},
-  shouldObserve: boolean = true,
+  shouldObserve = true,
 ): boolean {
   const [intersect, setIntersect] = useState(false);
   const [isUnobserved, setIsUnobserved] = useState(false);
@@ -33,7 +33,9 @@ export function useInViewport(
       observer.observe(elementRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
   }, [elementRef, unobserveOnIntersect, options, isUnobserved, shouldObserve]);
 
   return intersect;

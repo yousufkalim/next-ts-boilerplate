@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function useLocalStorage<T>(key: string, initialValue: T) {
   const [storedValue, setStoredValue] = useState<T>(() => {
     if (typeof window === 'undefined') return initialValue;
@@ -13,7 +14,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     }
   });
 
-  const setValue = (value: T | ((prevValue: T) => T)) => {
+  const setValue = (value: T | ((prevValue: T) => T)): void => {
     try {
       const valueToStore = value instanceof Function ? value(storedValue) : value;
       setStoredValue(valueToStore);
@@ -23,5 +24,5 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     }
   };
 
-  return [storedValue, setValue] as const;
+  return [storedValue, setValue];
 }

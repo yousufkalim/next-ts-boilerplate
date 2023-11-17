@@ -1,15 +1,23 @@
+import { FC } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { APP_NAME, WEB_URL } from '@config';
 
 const defaultOgImage = `${WEB_URL}/og-image.png`;
 
-export const Meta = ({
+interface MetaProps {
+  title?: string;
+  description?: string;
+  prefix?: string;
+  ogImage?: string;
+}
+
+export const Meta: FC<MetaProps> = function ({
   title = '',
   description = 'Website created using Next.js boilerplate by Yousuf Kalim',
   prefix = APP_NAME,
   ogImage = defaultOgImage,
-}) => {
+}) {
   const { asPath } = useRouter();
   const titleText = [prefix, title].filter(Boolean).join(' | ');
 
