@@ -25,11 +25,18 @@ Welcome to the Next.js TypeScript Boilerplate! This guide will help you get star
    git clone https://github.com/yousufkalim/next-ts-boilerplate.git
    ```
 
-2. **Install Dependencies:**
+2. **Install and setup Dependencies:**
 
    ```bash
    cd <project-folder>
    yarn install
+   cp .env.example .env
+   ```
+   
+3. **Run in dev mode:**
+
+   ```bash
+   yarn run dev
    ```
 
 ## Folder Structure
