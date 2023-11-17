@@ -3,8 +3,8 @@ import { fetchAllTodos } from '@api/todos.api';
 import { TodoItem } from '@components/Todos';
 import TodoType from '../../types/Todo.type';
 
-import ClockIcon from '@assets/clock.svg';
-import ListIcon from '@assets/list.svg';
+import ClockIcon from '@assets/img/clock.svg';
+import ListIcon from '@assets/img/list.svg';
 import toast from 'react-hot-toast';
 
 interface PropTypes {

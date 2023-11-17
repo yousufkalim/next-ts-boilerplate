@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google';
 import { Meta } from '@components/Meta';
-import NextLogo from '@assets/next.svg';
+import NextLogo from '@assets/img/next.svg';
 import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] });

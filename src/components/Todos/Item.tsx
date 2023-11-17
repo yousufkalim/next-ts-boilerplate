@@ -4,8 +4,8 @@ import { updateTodo } from '@api/todos.api';
 import toast from 'react-hot-toast';
 import TodoType from '../../types/Todo.type';
 
-import CheckboxIcon from '@assets/checkbox.svg';
-import TickIcon from '@assets/tick.svg';
+import CheckboxIcon from '@assets/img/checkbox.svg';
+import TickIcon from '@assets/img/tick.svg';
 
 export function PendingItem({
   todo,
