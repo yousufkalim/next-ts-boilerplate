@@ -1,15 +1,20 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-export function useWindowSize() {
-  const dimensions = useRef(() => ({ w: 1280, h: 800 }));
+interface WindowSize {
+  w: number;
+  h: number;
+}
+
+export function useWindowSize(): WindowSize {
+  const dimensions = useRef<{ w: number; h: number }>({ w: 1280, h: 800 });
 
   const createRuler = useCallback(() => {
     let ruler = document.createElement('div');
 
     ruler.style.position = 'fixed';
     ruler.style.height = '100vh';
-    ruler.style.width = 0;
-    ruler.style.top = 0;
+    ruler.style.width = '0';
+    ruler.style.top = '0';
 
     document.documentElement.appendChild(ruler);
 
@@ -19,6 +24,8 @@ export function useWindowSize() {
 
     // Clean up after ourselves
     document.documentElement.removeChild(ruler);
+
+    // @ts-ignore
     ruler = null;
   }, []);
 
@@ -36,12 +43,12 @@ export function useWindowSize() {
 
   const getSize = useCallback(() => {
     return {
-      width: window.innerWidth,
-      height: getHeight(),
+      w: window.innerWidth,
+      h: getHeight(),
     };
   }, [getHeight]);
 
-  const [windowSize, setWindowSize] = useState(dimensions.current);
+  const [windowSize, setWindowSize] = useState<WindowSize>(dimensions.current);
 
   useEffect(() => {
     const handleResize = () => {

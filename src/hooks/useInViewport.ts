@@ -1,11 +1,17 @@
-import { useEffect, useState } from 'react';
+import { RefObject, useEffect, useState } from 'react';
+
+interface IntersectionOptions {
+  root?: Element | null;
+  rootMargin?: string;
+  threshold?: number | number[];
+}
 
 export function useInViewport(
-  elementRef,
-  unobserveOnIntersect,
-  options = {},
-  shouldObserve = true
-) {
+  elementRef: RefObject<Element>,
+  unobserveOnIntersect: boolean,
+  options: IntersectionOptions = {},
+  shouldObserve: boolean = true,
+): boolean {
   const [intersect, setIntersect] = useState(false);
   const [isUnobserved, setIsUnobserved] = useState(false);
 
